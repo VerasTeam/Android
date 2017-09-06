@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "828060614927",
+    "firebase_url": "https://veras-app.firebaseio.com",
+    "project_id": "veras-app",
+    "storage_bucket": "veras-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:828060614927:android:60c68dfeeb87656b",
+        "android_client_info": {
+          "package_name": "co.veras.veras"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "828060614927-licoklaronumppk3ucvaui7rebltc229.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9KY5KFVIzLiFU4BsRdHX6hzuohxVVc2Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
