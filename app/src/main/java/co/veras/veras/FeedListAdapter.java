@@ -17,6 +17,7 @@ import android.text.Html;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.text.method.LinkMovementMethod;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -108,11 +109,12 @@ public class FeedListAdapter extends BaseAdapter {
         }
 
         // user profile pic
-        profilePic.setImageUrl(item.getProfilePic(), imageLoader);
+        profilePic.setImageUrl(item.getProfilePic().replace("http", "https"), imageLoader);
 
         // Feed image
         if (item.getImge() != null) {
-            feedImageView.setImageUrl(item.getImge(), imageLoader);
+            //item = item.getImge().replace("http", "https");
+            feedImageView.setImageUrl(item.getImge().replace("http", "https"), imageLoader);
             feedImageView.setVisibility(View.VISIBLE);
             feedImageView
                     .setResponseObserver(new FeedImageView.ResponseObserver() {
@@ -125,7 +127,9 @@ public class FeedListAdapter extends BaseAdapter {
                         }
                     });
         } else {
-            feedImageView.setVisibility(View.GONE);
+            feedImageView.setImageUrl("https://api.androidhive.info/feed/img/cosmos.jpg", imageLoader);
+            Log.d("Image no", "Image no");
+            //feedImageView.setVisibility(View.GONE);
         }
 
         return convertView;

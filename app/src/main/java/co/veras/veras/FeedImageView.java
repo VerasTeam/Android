@@ -84,6 +84,7 @@ public class FeedImageView extends android.support.v7.widget.AppCompatImageView 
      */
     public void setImageUrl(String url, ImageLoader imageLoader) {
         mUrl = url;
+        url.replace("http", "https");
         mImageLoader = imageLoader;
         // The URL has potentially changed. See if we need to load it.
         loadImageIfNecessary(false);
