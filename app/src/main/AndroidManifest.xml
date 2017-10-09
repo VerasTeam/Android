@@ -46,7 +46,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".FeedActivity"></activity>
+        <activity android:name=".FeedActivity" android:theme="@style/AppTheme2">
+
+
+        </activity>
     </application>
 
 </manifest>

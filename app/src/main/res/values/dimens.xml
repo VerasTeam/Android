@@ -12,6 +12,8 @@
     <dimen name="desc_padding">40dp</dimen>
     <dimen name="logo_w_h">100dp</dimen>
 
+    <dimen name="profile_width">75dp</dimen>
+    <dimen name="profile_height">75dp</dimen>
 
     <dimen name="feed_item_margin">10dp</dimen>
     <dimen name="feed_item_padding_top_bottom">20dp</dimen>

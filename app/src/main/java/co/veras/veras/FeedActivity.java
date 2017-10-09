@@ -10,12 +10,25 @@ import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.FragmentManager;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Cache;
 import com.android.volley.Cache.Entry;
@@ -33,11 +46,31 @@ public class FeedActivity extends AppCompatActivity {
     private List<FeedItem> feedItems;
     private String URL_FEED = "https://api.androidhive.info/feed/feed.json";
 
+    private DrawerLayout mDrawerLayout;
+    private ListView mDrawerList;
+    private String[] mPlanetTitles;
+    private ActionBarDrawerToggle mDrawerToggle;
+
     @SuppressLint("NewApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
+
+
+        mPlanetTitles = new String[]{"Hi", "Yo yo yo"};
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerList = (ListView) findViewById(R.id.left_drawer);
+        TextView textView = new TextView(getApplicationContext());
+        textView.setTextColor(Color.WHITE);
+        textView.setText("Settings");
+        mDrawerList.addHeaderView(textView);
+        // Set the adapter for the list view
+        mDrawerList.setAdapter(new ArrayAdapter<String>(this,
+                R.layout.drawer_list_item, mPlanetTitles));
+        // Set the list's click listener
+        //mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+
 
         listView = findViewById(R.id.list);
 
@@ -94,6 +127,31 @@ public class FeedActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.profile:
+                Intent intent = new Intent(FeedActivity.this, ProfileActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_logout:
+                Intent intent2 = new Intent(FeedActivity.this, LoginActivity.class);
+                startActivity(intent2);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+
     /**
      * Parsing json reponse and passing the data to feed view list adapter
      * */
@@ -131,10 +189,5 @@ public class FeedActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
 
 }
